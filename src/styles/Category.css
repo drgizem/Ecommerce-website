@@ -1,0 +1,9 @@
+@import url("features.css");
+
+.category-subnav{
+  color:var(--font-color)!important ;
+  justify-content: space-between;
+}
+.category-subnavitem:hover{
+  color:var(--button-color)!important
+}

@@ -1,0 +1,28 @@
+@import url("features.css");
+
+.navbar{
+  background-color: var(--main-color);
+  color:var(--bg-color);
+  height: 5vh ;
+}
+.navbar-brand{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.navbar-search{
+  align-items: center;
+  display: flex;
+}
+.navbar-search input{
+  border-radius: 20px;
+  height: 3vh;
+  border: none
+}
+.navbar-user{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3%
+}

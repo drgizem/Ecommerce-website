@@ -1,8 +1,17 @@
+
+
 export type User={
   name:string,
   email:string,
   id:string,
-  photoUrl:string
+  photoUrl:string,
+  cart:CartProduct[]
+}
+export type CartProduct={
+  id:string,
+  quality:string,
+  categoryName:string,
+  subcategoryName:string
 }
 export type NewUser={
   name:string,
@@ -22,7 +31,9 @@ export type Product = {
   stock:number
 }
 
-
+export type SubCategory={
+  name:string
+}
 export type Category = {
   id: string;
   name: string;

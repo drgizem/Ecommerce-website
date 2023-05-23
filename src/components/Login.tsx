@@ -29,7 +29,7 @@ export const Login=()=>{
     .then((userCredential)=>{
       const user=userCredential.user
       dispatch({
-        type:"login",payload:{
+        type:"login",payload:{...user,
           name:user?.displayName,
           email:user?.email,
           id:user?.uid,

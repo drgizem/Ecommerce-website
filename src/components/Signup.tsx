@@ -39,6 +39,7 @@ export const Signup=()=>{
           email:auth.currentUser?.email,
           id:auth.currentUser?.uid,
           photoUrl:auth.currentUser?.photoURL,
+          cart:[]
         }
       })
     })

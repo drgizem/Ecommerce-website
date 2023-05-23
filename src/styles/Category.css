@@ -3,7 +3,35 @@
 .category-subnav{
   color:var(--font-color)!important ;
   justify-content: space-between;
+  text-decoration: none;
 }
 .category-subnavitem:hover{
   color:var(--button-color)!important
+}
+.products-row{
+  gap:10px
+}
+.product-card{
+  max-width: 18rem;
+  height: 400px;
+  position: relative;
+}
+.product-btn{
+  background-color:var(--button-color);
+  border: none;
+  position: absolute;
+  bottom: 20px;
+}
+.product-title{
+  position: absolute;
+  top:220px
+}
+.product-price{
+  position: absolute;
+  top:280px;
+  font-size: 18px;
+}
+.product-btn:hover{
+  background-color: var(--hover-color);
+  color: black
 }

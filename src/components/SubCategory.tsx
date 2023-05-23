@@ -1,26 +1,41 @@
-import { Card } from "react-bootstrap"
-import { Category, Product } from "../types"
-import { useEffect } from "react"
+import { Card,Button, Row, Col, Container } from "react-bootstrap"
+import { SubCategory, Product } from "../types"
+import { useContext, useEffect, useState } from "react"
+import { getProducts } from "../firebase/ref"
+import { Context } from "./Context"
+import "../styles/Category.css"
+
 
 type Props={
-  subcategory:Category,
-  productList:Product[],
-  getProducts():void
+  subcategory:SubCategory,
 }
-export const SubCategory=({subcategory,productList,getProducts}:Props)=>{
+export const SubCategorypart=({subcategory}:Props)=>{
+  const [productList,setProductList]=useState<Product[]>([])
+  const {state}=useContext(Context)
 
-  useEffect(()=>{
-    getProducts()
-    },[])
+useEffect(()=>{
+  const upload=async()=>{
+    const fetch=await getProducts(state.category.name,state.subcategory.name)
+    setProductList(fetch)
+  }
+  upload()
+},[])
 
-  return <div>
-    <div>{subcategory.name}</div>
-    {productList.map((product)=>{
-      return <Card >
-        <Card.Img style={{width:"200px",height:"200px"}} variant="top" src={product.image}/>
-        <Card.Title>{product.title}</Card.Title>
-        <Card.Text>{product.description}</Card.Text>
-      </Card>
-    })}
-  </div>
+  return <>
+      <div>{state.subcategory.name}</div>
+      <Container>
+        <Row className="products-row">
+      {productList.map((item)=>{
+        return <>
+        <Card className="product-card">
+          <Card.Img  src={item.image} style={{maxWidth:"16rem",height:"200px"}}/>
+          <Card.Title className="product-title">{item.title}</Card.Title>
+          <Card.Text className="product-price">{item.price}$</Card.Text>
+          <Button className="product-btn">Go to product</Button>
+        </Card></>
+      })}
+      </Row>
+      </Container>
+  </>
+
 }

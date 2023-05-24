@@ -1,7 +1,7 @@
 import { createContext } from "react"
 import { useReducer,useEffect } from "react"
 import { Reducer } from "./Reducer"
-import { Category, SubCategory } from "../types"
+import { Category, Product, SubCategory } from "../types"
 
 export type InitialType={
   user:{
@@ -9,16 +9,12 @@ export type InitialType={
   email:string,
   id:string,
   photoUrl:string,
-  cart:CartProduct[]
+  cart:Product[]
   },
   category:Category,
-  subcategory:SubCategory
-}
-export type CartProduct={
-  id:string,
-  quality:string,
-  categoryName:string,
-  subcategoryName:string
+  subcategory:SubCategory,
+  product:Product,
+  query:string
 }
 export const INITIAL_STATE:InitialType=JSON.parse(localStorage.getItem("user") || "null") || {
   user:{
@@ -29,7 +25,16 @@ export const INITIAL_STATE:InitialType=JSON.parse(localStorage.getItem("user") |
     cart:[]
     },
    category:{id:"",name:""} ,
-   subcategory:{name:""}
+   subcategory:{name:""},
+   product:{id:"",
+    title:"",
+    description:"",
+    image:"",
+    price:0,
+    category:0,
+    subcategory:0,
+    stock:0},
+    query:""
 }
 export const Context = createContext<{
   state: InitialType;

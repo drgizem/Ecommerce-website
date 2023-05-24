@@ -33,6 +33,11 @@ const handleClick=(name:string)=>{
     type:"select_subcategory",payload:select
   })
 }
+const onSelectPro=(item:Product)=>{
+  dispatch({
+    type:"select_product",payload:item
+  })
+}
   return <>
   <Container>
   <Nav className="category-subnav">
@@ -48,7 +53,7 @@ const handleClick=(name:string)=>{
       <Card.Img  src={item.image} style={{maxWidth:"16rem",height:"200px"}}/>
       <Card.Title className="product-title">{item.title}</Card.Title>
       <Card.Text className="product-price">{item.price}$</Card.Text>
-      <Button className="product-btn">Go to product</Button>
+      <Link to={`/${item.title}`}><Button className="product-btn" onClick={()=>onSelectPro(item)}>Go to product</Button></Link>
     </Card></>
   })}
   </Row>

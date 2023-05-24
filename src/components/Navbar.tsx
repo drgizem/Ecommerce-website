@@ -1,17 +1,22 @@
-import {Navbar,Form,Col, Dropdown} from "react-bootstrap"
+import {Navbar,Form,Col, Dropdown,Card} from "react-bootstrap"
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import "../styles/Navbar.css"
 import { Link, useNavigate } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import { Context } from "./Context";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebase";
+import { Product } from "../types";
 
-export const Navbarpart=()=>{
+type Props={
+  products:Product[]
+}
+export const Navbarpart=({products}:Props)=>{
   const {state,dispatch}=useContext(Context)
+  const [search,setSearch]=useState("")
   const navigate=useNavigate()
 
   const onSignOut=()=>{
@@ -22,21 +27,29 @@ export const Navbarpart=()=>{
     localStorage.setItem("user","")
     navigate("/")
   }
+const handleClick=(product:Product)=>{
+  dispatch({
+    type:"select_product",payload:product
+  })
+  navigate(`/${product.title}`)
+  setSearch("")
+}
 
-  return(
-    <Navbar>
+  return(<>
+    <Navbar className="navbar">
         <Col className="navbar-brand">
         <Link to="/" style={{color:"white",textDecoration:"none"}}><EmojiPeopleIcon/>Buy buy</Link>
         </Col>
         <Col className="navbar-search">
-        <Form.Control placeholder="Search a product"/>
-      <SearchIcon/>
+          <Form className="navbar-searchbar">
+        <Form.Control className="mx-2" placeholder="Search a product" onChange={(e)=>setSearch(e.target.value)} value={search}/>
+        <SearchIcon/></Form>
       </Col>
       <Col className="navbar-user">
       {state.user.name==="" ? <Link to='/login' className="signin">Login</Link>
             : (
               <Dropdown drop="start" className="dropdown-login">
-                <Dropdown.Toggle className="bg-dark" style={{border:"none"}} id="dropdown-basic">
+                <Dropdown.Toggle className="dropdown-toggle" style={{border:"none"}} id="dropdown-basic">
                  <PersonIcon/>
                </Dropdown.Toggle>
                 <Dropdown.Menu >
@@ -46,6 +59,13 @@ export const Navbarpart=()=>{
              </Dropdown>)  }
       <ShoppingCartIcon/>
       </Col>
+      {search !=="" &&  <div className="mt-2 navbar-searchitems">{products.filter(product=>product.title.toLowerCase().includes(search) || 
+      product.description.toLowerCase().includes(search)).map(product=>{
+        return <Card  className="search-bar mb-1" onClick={()=>handleClick(product)}>
+          <Card.Img alt="" src={product.image} style={{width:"80px",height:"100px"}}/>
+         <Card.Body>{product.title}</Card.Body>
+        </Card>
+      })}</div>}
     </Navbar>
-  )
+  </>)
 }

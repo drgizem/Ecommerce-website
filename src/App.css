@@ -1,5 +1,10 @@
+@import url(styles/features.css);
+
 .App {
   text-align: center;
 }
 
-
+.card:hover{
+  border-color:var(--main-color) ;
+  box-shadow: 2px 2px 2px var(--button-color);
+}

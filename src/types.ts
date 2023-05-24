@@ -5,7 +5,7 @@ export type User={
   email:string,
   id:string,
   photoUrl:string,
-  cart:CartProduct[]
+  cart:Product[]
 }
 export type CartProduct={
   id:string,

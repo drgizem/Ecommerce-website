@@ -41,7 +41,7 @@ export const Home=()=>{
         type:"select_subcategory",payload:select
       })
   }
-console.log(state.category,state.subcategory)
+
   return (
     <Row>
       <Col xs={2} className="m-0 p-0">

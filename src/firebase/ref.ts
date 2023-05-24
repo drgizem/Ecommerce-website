@@ -75,9 +75,9 @@ export const getProducts = async (category:string,subcategory:string) => {
 export const getProduct = async (category:string,subcategory:string,productid:string) => {
     const productRef = doc(db, category,subcategory,'products',`${productid}`);
     const docSnap = await getDoc(productRef);
-    let product = {};
+    let product ={} as Product
     if (docSnap.exists()) {
-        product = docSnap.data();
+        product = docSnap.data() as Product;
     }
     return product;
 }

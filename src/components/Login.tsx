@@ -12,7 +12,7 @@ export const Login=()=>{
   const [validate,setValidate]=useState(false)
   const [error,setError]=useState(false)
   const [userError,setUserError]=useState(false)
-  const {dispatch}=useContext(Context)
+  const {state,dispatch}=useContext(Context)
   const navigate=useNavigate()
   const [signup,setSignup]=useState(false)
 
@@ -22,23 +22,23 @@ export const Login=()=>{
       return {...pre,[name]:value}
     })
   }
-  const handleLogin=(e:any)=>{
+  const handleLogin=async(e:any)=>{
     e.preventDefault()
     setValidate(true)
-    signInWithEmailAndPassword(auth,user.email,user.password)
+      signInWithEmailAndPassword(auth,user.email,user.password)
     .then((userCredential)=>{
       const user=userCredential.user
       dispatch({
-        type:"login",payload:{...user,
-          name:user?.displayName,
-          email:user?.email,
-          id:user?.uid,
-          photoURL:user?.photoURL
-          }
+        type:"login",payload:{
+          name:user.displayName,
+          email:user.email,
+          id:user.uid,
+          photoUrl:user.photoURL,
+        }
       })
     })
     .then(()=>navigate("/"))
-    .catch((error)=>{
+    .catch((error:any)=>{
       console.log(error.message)
       error.message.includes("wrong-password") && setError(true)
       error.message.includes("user-not-found") && setUserError(true)
@@ -50,8 +50,8 @@ export const Login=()=>{
     {signup && <Navigate to="/signup"/>} 
     <Form validated={validate} onSubmit={handleLogin}>
       <h1 className="login-title">Login</h1>
-      <Form.Control required className="mt-3" type="email" placeholder="Email" style={userError ? {borderColor:"red", backgroundImage:"none"} : {borderColor:"#ced4da"}} value={user.email} name="email" onChange={handleChange}/>
-      <Form.Control required className="mt-3" type="password" placeholder="Password" style={error || userError ? {borderColor:"red", backgroundImage:"none"} : {borderColor:"#ced4da"}} value={user.password} name="password" onChange={handleChange}/>
+      <Form.Control required className="mt-3" type="email" placeholder="Email" style={userError ? {borderColor:"red", backgroundImage:"none"} : {borderColor:"#ced4da"}} value={user.email || ""} name="email" onChange={handleChange}/>
+      <Form.Control required className="mt-3" type="password" placeholder="Password" style={error || userError ? {borderColor:"red", backgroundImage:"none"} : {borderColor:"#ced4da"}} value={user.password || ""} name="password" onChange={handleChange}/>
       {error && <Form.Text className="mt-3 text-danger">Wrong password!</Form.Text>}
       {userError && <Form.Text className="mt-3 text-danger">User is not found!</Form.Text>}
       <Button type="submit" className="signin-btn">Login</Button>

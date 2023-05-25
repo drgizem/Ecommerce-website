@@ -1,0 +1,14 @@
+@import url("features.css");
+
+.cart-product{
+  max-width: 300px;
+  margin-right: 3%;
+}
+.cart-btn{
+  background-color: var(--button-color);
+  border: none
+}
+.cart-btn:hover{
+  color: black;
+  background-color:var(--hover-color);
+}

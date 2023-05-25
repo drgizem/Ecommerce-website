@@ -57,7 +57,7 @@ const handleClick=(product:Product)=>{
                  <Dropdown.Item href="/" className="dropdown_text" onClick={onSignOut}>Sign out</Dropdown.Item>
                </Dropdown.Menu>
              </Dropdown>)  }
-      <ShoppingCartIcon/>
+      <Link to="/cart" className="signin"><ShoppingCartIcon/></Link>
       </Col>
       {search !=="" &&  <div className="mt-2 navbar-searchitems">{products.filter(product=>product.title.toLowerCase().includes(search) || 
       product.description.toLowerCase().includes(search)).map(product=>{

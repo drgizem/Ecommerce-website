@@ -5,13 +5,14 @@ export type User={
   email:string,
   id:string,
   photoUrl:string,
-  cart:Product[]
 }
 export type CartProduct={
   id:string,
-  quality:string,
-  categoryName:string,
-  subcategoryName:string
+  count:number,
+  price:number,
+  stock:number,
+  title:string,
+  image:string,
 }
 export type NewUser={
   name:string,
@@ -38,3 +39,4 @@ export type Category = {
   id: string;
   name: string;
 }
+

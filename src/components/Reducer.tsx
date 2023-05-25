@@ -1,4 +1,4 @@
-import { Category, Product, SubCategory, User } from "../types"
+import { CartProduct, Category, Product, SubCategory, User } from "../types"
 import { InitialType } from "./Context"
 
 type ContextAction=
@@ -7,7 +7,11 @@ type ContextAction=
 | {type:"select_subcategory" ; payload:SubCategory}
 | {type:"select_product" ; payload:Product}
 | {type:"search_query";payload:string}
-| {type:"add_cart";payload:Product}
+| {type:"clear_cart" ;payload:CartProduct[]}
+| {type:"add_cart" ;payload:CartProduct[]}
+| {type:"remove_cart" ; payload:CartProduct[]}
+
+
 
 
 export const Reducer=(state:InitialType,action:ContextAction)=>{
@@ -19,8 +23,7 @@ export const Reducer=(state:InitialType,action:ContextAction)=>{
           name:"",
           email:"",
           id:"",
-          photoUrl:"",
-          cart:[]
+          photoUrl:""
           },
           category:{id:"",name:""},
           subcategory:{name:""},
@@ -32,7 +35,8 @@ export const Reducer=(state:InitialType,action:ContextAction)=>{
           category:0,
           subcategory:0,
           stock:0},
-          query:""
+          query:"",
+          cart:[]
         }
       case "select_category":
         return {...state,category:action.payload,subcategory:{name:""}}
@@ -42,8 +46,12 @@ export const Reducer=(state:InitialType,action:ContextAction)=>{
           return {...state,product:action.payload}
           case "search_query":
           return {...state,query:action.payload}
-        case "add_cart":
-          return {...state,user:{...state.user,cart:[...state.user.cart,action.payload]}}
+          case "clear_cart":
+          return {...state,cart:action.payload}
+          case "add_cart":
+          return {...state,cart:action.payload}
+          case "remove_cart":
+          return {...state,cart:action.payload}
         default:
           return state
   }

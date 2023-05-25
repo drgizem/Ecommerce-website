@@ -12,6 +12,7 @@ import { Categorypart } from "./components/Category";
 import { SubCategorypart } from "./components/SubCategory";
 import { subcategories } from "./firebase/ref";
 import { Productpart } from "./components/Product";
+import { Cart } from "./components/Cart";
 
 function App() {
   const [categoryList,setCategoryList]=useState<Category[]>([])
@@ -60,6 +61,7 @@ useEffect(()=>{
       })}
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Signup/>}/>
+      <Route path="/cart" element={<Cart/>}/>
       </Routes>
     </div>
   );

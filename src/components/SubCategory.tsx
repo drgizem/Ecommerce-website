@@ -28,7 +28,7 @@ const onSelectPro=(item:Product)=>{
   })
 }
 
-  return <>
+  return (
       <Container className="mt-5">
         <Row className="products-row">
       {productList.map((item)=>{
@@ -42,6 +42,5 @@ const onSelectPro=(item:Product)=>{
       })}
       </Row>
       </Container>
-  </>
-
+  )
 }

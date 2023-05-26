@@ -35,7 +35,7 @@ const handleClick=(product:Product)=>{
   setSearch("")
 }
 
-  return(<>
+  return(
     <Navbar className="navbar">
         <Col className="navbar-brand">
         <Link to="/" style={{color:"white",textDecoration:"none"}}><EmojiPeopleIcon/>Buy buy</Link>
@@ -43,7 +43,7 @@ const handleClick=(product:Product)=>{
         <Col className="navbar-search">
           <Form className="navbar-searchbar">
         <Form.Control className="mx-2" placeholder="Search a product" onChange={(e)=>setSearch(e.target.value)} value={search}/>
-        <SearchIcon/></Form>
+       </Form>
       </Col>
       <Col className="navbar-user">
       {state.user.name==="" ? <Link to='/login' className="signin">Login</Link>
@@ -67,5 +67,5 @@ const handleClick=(product:Product)=>{
         </Card>
       })}</div>}
     </Navbar>
-  </>)
+  )
 }

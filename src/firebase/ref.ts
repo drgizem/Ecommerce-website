@@ -1,3 +1,4 @@
+
 import { db } from './firebase';
 import {collection,getDocs,doc,getDoc, setDoc} from 'firebase/firestore';
 import {Product} from '../types';
@@ -41,15 +42,20 @@ export const getProducts = async (category:string,subcategory:string) => {
     );
     return products;
 }
+
 export const getProduct = async (category:string,subcategory:string,productid:string) => {
     const productRef = doc(db, category,subcategory,'products',`${productid}`);
     const docSnap = await getDoc(productRef);
     let product ={} as Product
+
+
+
     if (docSnap.exists()) {
         product = docSnap.data() as Product;
     }
     return product;
 }
+
 
 export const getProductByCategory = async (categoryid:string,categoryname:string) => {
     let subcategories = await getSubCategory(categoryid);
@@ -60,3 +66,6 @@ export const getProductByCategory = async (categoryid:string,categoryname:string
     }
     return products;
 }
+
+
+

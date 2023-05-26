@@ -9,6 +9,7 @@ import {db} from "../firebase/firebase"
 
 export const Productpart=()=>{
   const {state,dispatch}=useContext(Context)
+  const [count,setCount]=useState("1")
   const [product,setProduct]=useState<Product>({} as Product)
   
   useEffect(()=>{
@@ -24,7 +25,7 @@ export const Productpart=()=>{
     if(index===-1){
       let newPro={
         id:product.id,
-        count:1,
+        count:Number(count),
         price:product.price,
         stock:product.stock,
         title:product.title,
@@ -49,7 +50,7 @@ export const Productpart=()=>{
       if(index===-1){
         let newPro={
           id:product.id,
-          count:1,
+          count:Number(count),
           price:product.price,
           stock:product.stock,
           title:product.title,
@@ -72,7 +73,10 @@ export const Productpart=()=>{
       }
     }
   }
-
+const onChangeCount=(e:any)=>{
+  setCount(e.target.value)
+  Number(e.target.value) <2 && setCount("1")
+}
   return (
     <Container className="mt-5">
       <Row className="poduct">
@@ -86,7 +90,7 @@ export const Productpart=()=>{
         <Col sm={3}>
         <h1>${product.price}</h1>
         <Row className="product-cartpart">
-        <Form className="cartpart-input"><Form.Control type="number" placeholder="1" /></Form>
+        <Form className="cartpart-input"><Form.Control type="number" placeholder="1" onChange={onChangeCount} value={count}/></Form>
         <Button className="cartpart-btn" onClick={()=>handleAdd(product)}>Add to Cart</Button>
         </Row>
         </Col>

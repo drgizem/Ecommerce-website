@@ -3,37 +3,6 @@ import {collection,getDocs,doc,getDoc, setDoc} from 'firebase/firestore';
 import {Product} from '../types';
 import {Category,SubCategory} from '../types';
 
-export const subcategories=[
-    {name:"Kitchen Appliances"},
-    {name:"Laundry Appliances"},
-    {name:"Personal Care Appliances"},
-    {name:"Small Appliances"},
-    {name:"Smart Home Appliances"},
-    {name:"Custom Desktops"},
-    {name:"Graphic Cards"},
-    {name:"Motherboards"},
-    {name:"Processors"},
-    {name:"Ram"},
-    {name:"Storage"},
-    {name:"Business Laptops"},
-    {name:"Chromebooks"},
-    {name:"Gaming Laptops"},
-    {name:"Ultrabooks"},
-    {name:"Android Phones"},
-    {name:"iOS Phones"},
-    {name:"E-readers"},
-    {name:"Headphones"},
-    {name:"Portable Audio Players"},
-    {name:"Wearable Technology"},
-    {name:"4K Ultra HD TVs"},
-    {name:"Curved TVs"},
-    {name:"OLED TVs"},
-    {name:"QLED TVs"},
-    {name:"Smart TVs"},
-    {name:"Android Tablets"},
-    {name:"Windows Tablets"},
-    {name:"iPad"}
-  ]
 export const handleProductAdd = (category:string,subcategory:string,productobject:Product) => {
     const productRef = doc(db, category, subcategory,'products',`${productobject.id}`);
     setDoc(productRef, productobject);

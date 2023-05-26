@@ -10,13 +10,13 @@ import { Category, Product, SubCategory } from "./types";
 import { getCategory, getProductByCategory, getSubCategory} from "./firebase/ref";
 import { Categorypart } from "./components/Category";
 import { SubCategorypart } from "./components/SubCategory";
-import { subcategories } from "./firebase/ref";
 import { Productpart } from "./components/Product";
 import { Cart } from "./components/Cart";
 
 function App() {
   const [categoryList,setCategoryList]=useState<Category[]>([])
   const [subCategoryList,setSubCategoryList]=useState<SubCategory[]>([])
+  const [allSubCat,setAllSubCat]=useState<SubCategory[]>([])
   const [productList,setProductList]=useState<Product[]>([])
 
 
@@ -27,18 +27,19 @@ function App() {
    }
    uploadCat()
   },[])
-const onfetchsub=async(id:string)=>{
-  const fetch=await getSubCategory(id)
-  setSubCategoryList(fetch)
-}
+
 useEffect(()=>{
   const fetchPro=async()=>{
-    let temp:Product[]=[]
+    let temp1:SubCategory[]=[]
+    let temp2:Product[]=[]
     for(let i=0;i<categoryList.length;i++){ 
-        const fetch=await getProductByCategory(categoryList[i].id,categoryList[i].name)
-        temp=[...temp,...fetch]
+        const fetch1=await getSubCategory(categoryList[i].id)
+        temp1=[...temp1,...fetch1]
+        const fetch2=await getProductByCategory(categoryList[i].id,categoryList[i].name)
+        temp2=[...temp2,...fetch2]
     } 
-    setProductList(temp)
+    setAllSubCat(temp1)
+    setProductList(temp2)
   }
   fetchPro()
 },[categoryList])
@@ -50,9 +51,9 @@ useEffect(()=>{
       <Routes>
       <Route path="/" element={<Home/>}/>
       {categoryList.map((category)=>{
-        return <Route key={category.id} path={`/${category.name}`} element={<Categorypart onFetchSub={()=>onfetchsub(category.id)} subCat={subCategoryList} category={category} />}/>
+        return <Route key={category.id} path={`/${category.name}`} element={<Categorypart />}/>
       })}
-      {subcategories.map((item)=>{
+      {allSubCat.map((item)=>{
             return <Route key={item.name} path={`/${item.name}`} element={<SubCategorypart subcategory={item}/>}/>
         })
       }

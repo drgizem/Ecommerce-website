@@ -73,7 +73,7 @@ export const Productpart=()=>{
     }
   }
 
-  return <>
+  return (
     <Container className="mt-5">
       <Row className="poduct">
         <Col>
@@ -92,5 +92,5 @@ export const Productpart=()=>{
         </Col>
       </Row>
     </Container>
-  </>
+  )
 }

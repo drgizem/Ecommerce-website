@@ -13,7 +13,7 @@ export const Home=()=>{
   const [subCat,setSubCat]=useState<SubCategory[]>([])
   const [selectCat,setSelectCat]=useState<Category>({} as Category)
   const [selectSubCat,setSelectSubCat]=useState<SubCategory>({} as SubCategory)
-  const {state,dispatch}=useContext(Context)
+  const {dispatch}=useContext(Context)
   const navigate=useNavigate()
 
   useEffect(()=>{

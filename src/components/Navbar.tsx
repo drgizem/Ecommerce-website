@@ -35,7 +35,7 @@ const handleClick=(product:Product)=>{
   setSearch("")
 }
 
-  return(<>
+  return(
     <Navbar className="navbar">
         <Col className="navbar-brand">
         <Link to="/" style={{color:"white",textDecoration:"none"}}><EmojiPeopleIcon/>Buy buy</Link>
@@ -67,5 +67,5 @@ const handleClick=(product:Product)=>{
         </Card>
       })}</div>}
     </Navbar>
-  </>)
+  )
 }

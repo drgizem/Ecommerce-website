@@ -58,8 +58,8 @@ useEffect(()=>{
   }
 
 console.log(state.cart)
-  return <>
-  <Container>
+  return (
+<Container>
     <Row className="mt-5">
     {cart.length===0 ? <div>No Cart Item</div> :
     cart.map((item)=>{
@@ -75,5 +75,5 @@ console.log(state.cart)
   <Button className="cart-btn mt-5" onClick={handleClear}>Clear Cart</Button>
   <Button className="cart-btn mx-3 mt-5" >Checkout</Button>
   </Container>
-  </>
+  )
 }

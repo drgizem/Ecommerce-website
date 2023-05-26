@@ -64,8 +64,9 @@ export const Signup=()=>{
     signInWithPopup(auth,provider)
     .then(()=>navigate("/"))
   }
-  return (<Container className="login-card">
-    <Form validated={validate} onSubmit={handleSignup}>
+  return (
+  <Container className="login-card">
+    <Form noValidate validated={validate} onSubmit={handleSignup}>
       <h1 className="login-title">Sign up</h1>
       <Form.Control required className="mt-3" type="text" placeholder="User name" value={user.name || ""} name="name" onChange={handleChange}/>
       <Form.Control required className="mt-3" type="email" placeholder="Email" value={user.email || ""} name="email" onChange={handleChange}/>

@@ -1,9 +1,8 @@
 
 import { db } from './firebase';
 import {collection,getDocs,doc,getDoc, setDoc} from 'firebase/firestore';
-import {Product} from '../types/types';
-import {Category} from '../types/types';
-
+import {Product} from '../types';
+import {Category,SubCategory} from '../types';
 
 export const handleProductAdd = (category:string,subcategory:string,productobject:Product) => {
     const productRef = doc(db, category, subcategory,'products',`${productobject.id}`);
@@ -25,7 +24,7 @@ export const getCategory = async () => {
 export const getSubCategory = async (category:string) => {
     const subcategoryRef = doc(db, 'Categories',`${category}`);
     const docSnap = await getDoc(subcategoryRef);
-    let subcategories:Category[] = [];
+    let subcategories:SubCategory[] = [];
     if (docSnap.exists()) {
         subcategories = docSnap.data().subcategories;
     }
@@ -47,7 +46,10 @@ export const getProducts = async (category:string,subcategory:string) => {
 export const getProduct = async (category:string,subcategory:string,productid:string) => {
     const productRef = doc(db, category,subcategory,'products',`${productid}`);
     const docSnap = await getDoc(productRef);
-    let product={} as Product;
+    let product ={} as Product
+
+
+
     if (docSnap.exists()) {
         product = docSnap.data() as Product;
     }
@@ -64,4 +66,6 @@ export const getProductByCategory = async (categoryid:string,categoryname:string
     }
     return products;
 }
+
+
 

@@ -1,0 +1,22 @@
+@import url("features.css");
+
+
+.product-cartpar{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.cartpart-input{
+  max-width: 80px;
+}
+.cartpart-btn{
+  background-color: var(--button-color);
+  border:none;
+  margin-left:0px;
+  max-width: 150px;
+}
+.cartpart-btn:hover{
+  background-color: var(--hover-color);
+  color:black
+}

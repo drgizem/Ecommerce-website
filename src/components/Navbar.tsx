@@ -43,7 +43,7 @@ const handleClick=(product:Product)=>{
         <Col className="navbar-search">
           <Form className="navbar-searchbar">
         <Form.Control className="mx-2" placeholder="Search a product" onChange={(e)=>setSearch(e.target.value)} value={search}/>
-        <SearchIcon/></Form>
+       </Form>
       </Col>
       <Col className="navbar-user">
       {state.user.name==="" ? <Link to='/login' className="signin">Login</Link>

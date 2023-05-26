@@ -1,5 +1,6 @@
 import {Navbarpart} from "./components/Navbar"
 import './App.css';
+
 import {useState,useEffect} from "react"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Routes,Route } from "react-router-dom";
@@ -13,6 +14,13 @@ import { SubCategorypart } from "./components/SubCategory";
 import { subcategories } from "./firebase/ref";
 import { Productpart } from "./components/Product";
 import { Cart } from "./components/Cart";
+import AdminHome from './components/AdminSide/AdminHome';
+import AdminAddProduct from './components/AdminSide/AdminAddProduct';
+import AdminEdit from './components/AdminSide/AdminEdit';
+import Home from './components/Home';
+import Contact from './components/Contact';
+import About from './components/About';
+
 
 function App() {
   const [categoryList,setCategoryList]=useState<Category[]>([])
@@ -62,6 +70,12 @@ useEffect(()=>{
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/cart" element={<Cart/>}/>
+      <Route path="/admin" element={<AdminHome />} />
+      <Route path="/adminProductadd" element={<AdminAddProduct/>} />
+      <Route path="/adminProductedit" element={<AdminEdit/>} />
+      <Route path="/contact" element={<Contact/>} />
+      <Route path="/" element={<Home/>} />
+      <Route path="/about" element={<About/>} />
       </Routes>
     </div>
   );

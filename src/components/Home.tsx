@@ -1,3 +1,4 @@
+
 import { useContext, useEffect, useState } from "react"
 import { Row,Col, Nav } from "react-bootstrap"
 import { Category, SubCategory } from "../types"
@@ -60,3 +61,4 @@ export const Home=()=>{
     </Row>
   )
 }
+

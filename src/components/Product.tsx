@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { Context } from "./Context"
-import { Product } from "../types"
+import { Product } from "../types/types"
 import { Container, Row,Col, Button,Form } from "react-bootstrap"
 import "../styles/Product.css"
 import {getDoc,doc,setDoc} from "firebase/firestore"

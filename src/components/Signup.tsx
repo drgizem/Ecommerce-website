@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { Button, Container, Form,Card } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
-import { NewUser } from "../types"
+import { NewUser } from "../types/types"
 import { auth } from "../firebase/firebase"
 import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth"
 import { Context } from "./Context"

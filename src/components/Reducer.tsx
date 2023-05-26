@@ -1,4 +1,4 @@
-import { CartProduct, Category, Product, SubCategory, User } from "../types"
+import { CartProduct, Category, Product, SubCategory, User } from "../types/types"
 import { InitialType } from "./Context"
 
 type ContextAction=

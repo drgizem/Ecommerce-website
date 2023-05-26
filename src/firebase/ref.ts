@@ -1,8 +1,8 @@
 
 import { db } from './firebase';
 import {collection,getDocs,doc,getDoc, setDoc} from 'firebase/firestore';
-import {Product} from '../types';
-import {Category,SubCategory} from '../types';
+import {Product} from '../types/types';
+import {Category,SubCategory} from '../types/types';
 
 export const handleProductAdd = (category:string,subcategory:string,productobject:Product) => {
     const productRef = doc(db, category, subcategory,'products',`${productobject.id}`);

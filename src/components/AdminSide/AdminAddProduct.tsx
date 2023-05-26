@@ -1,7 +1,7 @@
 import { Form,Container } from "react-bootstrap"
 import { useState,useEffect } from "react"
 import { Button } from "@mui/material"
-import { Category, Product } from "../../types/types"
+import { Category, Product,SubCategory } from "../../types/types"
 import { v4 as uuid } from 'uuid';
 import {storage} from '../../firebase/firebase'
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
@@ -19,7 +19,7 @@ const AdminAddProduct = () => {
         stock:0
     })
     const [categories,setCategories] = useState<Category[]>([])
-    const [subcategories,setSubcategories] = useState<Category[]>([])
+    const [subcategories,setSubcategories] = useState<SubCategory[]>([])
     const handle = (e:React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement|HTMLSelectElement>) => {
         setProduct({...product,[e.target.name]:e.target.value})
     }
@@ -123,7 +123,7 @@ const AdminAddProduct = () => {
                     <Form.Control value={product.subcategory} onChange={handle} name='subcategory' as="select">
                         <option value={-1}>Choose...</option>
                         {subcategories.map((subcategory,index) => (
-                            <option value={index} key={subcategory.id}>{subcategory.name}</option>
+                            <option value={index} key={index}>{subcategory.name}</option>
                         ))}
                     </Form.Control>
                 </Form.Group>    

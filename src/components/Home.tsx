@@ -1,7 +1,7 @@
 
 import { useContext, useEffect, useState } from "react"
 import { Row,Col, Nav } from "react-bootstrap"
-import { Category, SubCategory } from "../types"
+import { Category, SubCategory } from "../types/types"
 import { getCategory, getSubCategory } from "../firebase/ref"
 import "../styles/Home.css"
 import { useNavigate } from "react-router-dom"
@@ -12,11 +12,9 @@ export const Home=()=>{
   const [categoryList,setCategoryList]=useState<Category[]>([])
   const [hover,setHover]=useState(false)
   const [subCat,setSubCat]=useState<SubCategory[]>([])
-  const [selectCat,setSelectCat]=useState<Category>({} as Category)
-  const [selectSubCat,setSelectSubCat]=useState<SubCategory>({} as SubCategory)
-  const {dispatch}=useContext(Context)
+  const {state,dispatch}=useContext(Context)
   const navigate=useNavigate()
-
+  console.log(state)
   useEffect(()=>{
    const uploadCat=async()=>{
       const fetchedCat=await getCategory()
@@ -29,7 +27,7 @@ export const Home=()=>{
     const fetchSub=await getSubCategory(id)
     setSubCat(fetchSub)
     const select=categoryList.find((item)=>item.id===id)
-    setSelectCat(select!)
+    
     dispatch({
       type:"select_category",payload:select
     })
@@ -37,7 +35,7 @@ export const Home=()=>{
   const onHoverSub=(name:string)=>{
     setHover(true)
     const select=subCat.find((item)=>item.name===name)
-    setSelectSubCat(select!)
+    
       dispatch({
         type:"select_subcategory",payload:select
       })

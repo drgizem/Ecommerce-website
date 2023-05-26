@@ -1,5 +1,5 @@
 import { Card,Button, Row, Container } from "react-bootstrap"
-import { SubCategory, Product } from "../types"
+import { SubCategory, Product } from "../types/types"
 import { useContext, useEffect, useState } from "react"
 import { getProducts } from "../firebase/ref"
 import { Context } from "./Context"

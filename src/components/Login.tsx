@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { Button, Container, Form } from "react-bootstrap"
-import { NewUser } from "../types"
+import { NewUser } from "../types/types"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../firebase/firebase"
 import { Context } from "./Context"

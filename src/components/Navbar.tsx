@@ -9,7 +9,7 @@ import { useContext,useState } from "react";
 import { Context } from "./Context";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebase";
-import { Product } from "../types";
+import { Product } from "../types/types";
 
 type Props={
   products:Product[]

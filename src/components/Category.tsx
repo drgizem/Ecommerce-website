@@ -1,6 +1,6 @@
 import { Container, Nav,Card, Row, Button } from "react-bootstrap"
 import { getProductByCategory, getSubCategory} from "../firebase/ref"
-import { Product,SubCategory } from "../types"
+import { Product,SubCategory } from "../types/types"
 import {useEffect, useState,useContext} from "react"
 import "../styles/Category.css"
 import { Link } from "react-router-dom"

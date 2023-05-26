@@ -1,5 +1,5 @@
 import {useContext, useEffect, useState} from "react"
-import { CartProduct } from "../types"
+import { CartProduct } from "../types/types"
 import { Context } from "./Context"
 import { Button, Card, Container, Row } from "react-bootstrap"
 import DeleteIcon from '@mui/icons-material/Delete';

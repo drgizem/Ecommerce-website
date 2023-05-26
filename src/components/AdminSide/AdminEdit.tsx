@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react"
-import { Category,Product } from "../../types/types"
+import { Category,Product,SubCategory } from "../../types/types"
 import {getProducts,getCategory,getSubCategory,handleProductAdd} from '../../firebase/ref'
 import { Button, Container,Form } from "react-bootstrap"
 
@@ -14,7 +14,7 @@ type Selected={
 
 const AdminEdit = () => {
     const [categories,setCategories] = useState<Category[]>([])
-    const [subcategories,setSubcategories] = useState<Category[]>([])
+    const [subcategories,setSubcategories] = useState<SubCategory[]>([])
     const [selectedCategory,setSelectedCategory] = useState<Selected>({category:-1,subcategory:-1})
     const [products,setProducts] = useState<Product[]>([])
     const [selectedProduct,setSelectedProduct] = useState<number>(-1)
@@ -116,7 +116,7 @@ const AdminEdit = () => {
                 <Form.Label>Subcategory</Form.Label>
                 <Form.Control onChange={handleChange} value={selectedCategory.subcategory} name="subcategory" as="select" >
                     <option value={-1}>Select Subcategory</option>
-                    {subcategories.map((subcategory,index)=>{return <option key={subcategory.id} value={index}>{subcategory.name}</option>})}
+                    {subcategories.map((subcategory,index)=>{return <option key={index} value={index}>{subcategory.name}</option>})}
                 </Form.Control>
             </Form.Group>
             <Form.Group controlId="exampleForm.SelectCustom">

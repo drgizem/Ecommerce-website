@@ -1,7 +1,7 @@
 import { createContext } from "react"
 import { useReducer,useEffect } from "react"
 import { Reducer } from "./Reducer"
-import { CartProduct, Category, Product, SubCategory } from "../types"
+import { CartProduct, Category, Product, SubCategory } from "../types/types"
 
 export type InitialType={
   user:{

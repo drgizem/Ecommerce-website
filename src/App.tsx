@@ -1,13 +1,12 @@
 import {Navbarpart} from "./components/Navbar"
 import './App.css';
-
 import {useState,useEffect} from "react"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Routes,Route } from "react-router-dom";
 import { Login } from "./components/Login";
 import { Signup } from "./components/Signup";
 import { Home } from "./components/Home";
-import { Category, Product, SubCategory } from "./types";
+import { Category, Product, SubCategory } from "./types/types";
 import { getCategory, getProductByCategory, getSubCategory} from "./firebase/ref";
 import { Categorypart } from "./components/Category";
 import { SubCategorypart } from "./components/SubCategory";
@@ -16,7 +15,6 @@ import { Cart } from "./components/Cart";
 import AdminHome from './components/AdminSide/AdminHome';
 import AdminAddProduct from './components/AdminSide/AdminAddProduct';
 import AdminEdit from './components/AdminSide/AdminEdit';
-import Home from './components/Home';
 import Contact from './components/Contact';
 import About from './components/About';
 

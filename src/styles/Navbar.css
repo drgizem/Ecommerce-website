@@ -6,6 +6,9 @@
   height: 5vh ;
   position: relative;
 }
+.navbar>a{
+  color:var(--bg-color)!important
+}
 .navbar-brand{
   display: flex;
   justify-content: center;

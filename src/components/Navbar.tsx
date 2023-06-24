@@ -1,6 +1,5 @@
 import {Navbar,Form,Col, Dropdown,Card} from "react-bootstrap"
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
-import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import "../styles/Navbar.css"
 import { Link, useNavigate } from "react-router-dom";
@@ -10,6 +9,7 @@ import { Context } from "./Context";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { Product } from "../types/types";
+import { Badge } from "@mui/material";
 
 type Props={
   products:Product[]
@@ -57,7 +57,7 @@ const handleClick=(product:Product)=>{
                  <Dropdown.Item href="/" className="dropdown_text" onClick={onSignOut}>Sign out</Dropdown.Item>
                </Dropdown.Menu>
              </Dropdown>)  }
-      <Link to="/cart" className="signin"><ShoppingCartIcon/></Link>
+      <Link to="/cart" className="signin"><Badge badgeContent={state.cart.length} color="secondary"><ShoppingCartIcon/></Badge></Link>
       </Col>
       {search !=="" &&  <div className="mt-2 navbar-searchitems">{products.filter(product=>product.title.toLowerCase().includes(search) || 
       product.description.toLowerCase().includes(search)).map(product=>{

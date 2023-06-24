@@ -17,11 +17,12 @@ import AdminAddProduct from './components/AdminSide/AdminAddProduct';
 import AdminEdit from './components/AdminSide/AdminEdit';
 import Contact from './components/Contact';
 import About from './components/About';
+import Footer from "./components/Footer";
+import { Checkout } from "./components/Checkout";
 
 
 function App() {
   const [categoryList,setCategoryList]=useState<Category[]>([])
-  const [subCategoryList,setSubCategoryList]=useState<SubCategory[]>([])
   const [allSubCat,setAllSubCat]=useState<SubCategory[]>([])
   const [productList,setProductList]=useState<Product[]>([])
 
@@ -73,8 +74,8 @@ useEffect(()=>{
       <Route path="/adminProductadd" element={<AdminAddProduct/>} />
       <Route path="/adminProductedit" element={<AdminEdit/>} />
       <Route path="/contact" element={<Contact/>} />
-      <Route path="/" element={<Home/>} />
       <Route path="/about" element={<About/>} />
+      <Route path="/checkout" element={<Checkout/>} />
       </Routes>
     </div>
   );

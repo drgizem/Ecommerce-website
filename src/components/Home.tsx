@@ -1,4 +1,5 @@
-
+import ProductCarousel from "./Carousel"
+import Featured from "./Featured"
 import { useContext, useEffect, useState } from "react"
 import { Row,Col, Nav } from "react-bootstrap"
 import { Category, SubCategory } from "../types/types"
@@ -14,7 +15,7 @@ export const Home=()=>{
   const [subCat,setSubCat]=useState<SubCategory[]>([])
   const {state,dispatch}=useContext(Context)
   const navigate=useNavigate()
-  console.log(state)
+
   useEffect(()=>{
    const uploadCat=async()=>{
       const fetchedCat=await getCategory()
@@ -41,7 +42,7 @@ export const Home=()=>{
       })
   }
 
-  return (
+  return (<>
     <Row>
       <Col xs={2} className="m-0 p-0">
         <Nav className="sidebar">
@@ -56,7 +57,9 @@ export const Home=()=>{
              })}
             </Nav></Col>
           } 
+      <ProductCarousel />
     </Row>
-  )
+    <Row><Featured/></Row>
+    </>)
 }
 

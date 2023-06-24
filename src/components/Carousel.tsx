@@ -16,7 +16,7 @@ const ProductCarousel = () => {
             setProducts(temp)
         })
     }, [])
-    console.log(products)
+
     return (
         <Carousel>
             {products&&products.map((product,index) => {

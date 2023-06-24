@@ -15,7 +15,7 @@ const Featured = () => {
             setProducts(temp)
         })
     }, [])
-    console.log(products)
+
     return (
         <Row className='featured-cont'>
             {products&&products.map((item,index) => {

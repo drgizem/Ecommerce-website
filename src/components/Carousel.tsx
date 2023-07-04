@@ -16,13 +16,12 @@ const ProductCarousel = () => {
             setProducts(temp)
         })
     }, [])
-    console.log(products)
     return (
         <Carousel>
             {products&&products.map((product,index) => {
                 return (
                     <Carousel.Item key={index}>
-                  <Link to={`/${product.title}`}> 
+                  <Link to={`/products/${product.id}`}> 
                   <Row>
                   <Col>
                        <img

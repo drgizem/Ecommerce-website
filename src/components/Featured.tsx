@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Product } from '../types/types'
 import {getProducts} from '../firebase/ref'
-import {Col,Row} from 'react-bootstrap'
+import {Row} from 'react-bootstrap'
 import FeaturedCard from './Featured Card'
 
 
@@ -15,7 +15,6 @@ const Featured = () => {
             setProducts(temp)
         })
     }, [])
-    console.log(products)
     return (
         <Row className='featured-cont'>
             {products&&products.map((item,index) => {

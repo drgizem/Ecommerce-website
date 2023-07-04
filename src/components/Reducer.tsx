@@ -39,7 +39,7 @@ export const Reducer=(state:InitialType,action:ContextAction)=>{
           cart:[]
         }
       case "select_category":
-        return {...state,category:action.payload,subcategory:{name:""}}
+        return {...state,category:action.payload}
         case "select_subcategory":
           return {...state,subcategory:action.payload}
         case "select_product":

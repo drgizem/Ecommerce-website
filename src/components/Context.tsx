@@ -23,16 +23,6 @@ export const INITIAL_STATE:InitialType=JSON.parse(localStorage.getItem("user") |
     id:"",
     photoUrl:""
     },
-   category:{id:"",name:""} ,
-   subcategory:{name:""},
-   product:{id:"",
-    title:"",
-    description:"",
-    image:"",
-    price:0,
-    category:0,
-    subcategory:0,
-    stock:0},
     query:"",
     cart:[]
 }

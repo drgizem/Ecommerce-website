@@ -1,62 +1,38 @@
-
-import { useContext, useEffect, useState } from "react"
-import { Row,Col, Nav } from "react-bootstrap"
-import { Category, SubCategory } from "../types/types"
-import { getCategory, getSubCategory } from "../firebase/ref"
+import {  useEffect, useState } from "react"
+import { Row,Col } from "react-bootstrap"
 import "../styles/Home.css"
-import { useNavigate } from "react-router-dom"
-import { Context } from "./Context"
-
+import  Carousel  from "./Carousel"
+import  Sidebar  from "./Sidebar"
+import Featured from "./Featured"
+import Swipe from "./Swipe"
 
 export const Home=()=>{
-  const [categoryList,setCategoryList]=useState<Category[]>([])
-  const [hover,setHover]=useState(false)
-  const [subCat,setSubCat]=useState<SubCategory[]>([])
-  const {state,dispatch}=useContext(Context)
-  const navigate=useNavigate()
-  console.log(state)
-  useEffect(()=>{
-   const uploadCat=async()=>{
-      const fetchedCat=await getCategory()
-      setCategoryList(fetchedCat)
-   }
-   uploadCat()
-  },[])
-  const handleCat=async(id:string)=>{
-    setHover(true)
-    const fetchSub=await getSubCategory(id)
-    setSubCat(fetchSub)
-    const select=categoryList.find((item)=>item.id===id)
-    
-    dispatch({
-      type:"select_category",payload:select
-    })
-  }
-  const onHoverSub=(name:string)=>{
-    setHover(true)
-    const select=subCat.find((item)=>item.name===name)
-    
-      dispatch({
-        type:"select_subcategory",payload:select
-      })
-  }
+  const[width,setWidth]=useState<number>(window.innerWidth)
 
+  useEffect(()=>{
+    window.addEventListener("resize",()=>setWidth(window.innerWidth))
+  }
+  ,[width])
+ 
   return (
-    <Row>
-      <Col xs={2} className="m-0 p-0">
-        <Nav className="sidebar">
-          {categoryList.map((category,key)=>{
-            return <Nav.Link className="sidebar-item" onClick={()=>navigate(`/${category.name}`)} onMouseOut={()=>setHover(false)}  onMouseOver={()=>handleCat(category.id)} key={category.id} style={{color:"#0a090cff"}} >{category.name}</Nav.Link>
-          })}
-        </Nav>
+   <>
+    <Row className="carousel-sidebar">
+      { width>1070 ? <Col md={3} className="sidebar-cont">
+        <Sidebar />
+        </Col>:null
+      }
+      <Col xs={11} lg={9} className="carousel">
+        <Carousel/>
       </Col>
-      {hover && <Col xs={2} className="m-0 p-0" ><Nav className="sidebar-sub">
-             {subCat.map((item)=>{
-              return <Nav.Link onClick={()=>navigate(`/${item.name}`)} onMouseOver={()=>onHoverSub(item.name)} onMouseOut={()=>setHover(false)} className="sidebar-subitem" style={{color:"#0a090cff"}}>{item.name}</Nav.Link>
-             })}
-            </Nav></Col>
-          } 
     </Row>
+    <Row className="swipe-cont mx-5">
+      <Swipe/>
+    </Row>
+    <Row className="featured mt-5 mb-5 mx-3">
+      <Featured/>
+    </Row>
+   </>
+
   )
 }
 

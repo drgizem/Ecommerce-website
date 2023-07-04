@@ -1,5 +1,6 @@
 import { Product } from "../types/types";
 import {Card, Col,Row,Button} from 'react-bootstrap'
+import { Link } from "react-router-dom";
 
 type FeaturedCardProps = {
     product: Product;
@@ -18,9 +19,9 @@ const FeaturedCard = ({product}:FeaturedCardProps) => {
         <Card.Body>
             <Card.Title>{product.title}</Card.Title>
             <Card.Text>
-                {product.price}
+                {product.price}$
             </Card.Text>
-            <Button> Go to product</Button>
+            <Link to = {`/products/${product.id}`}><Button variant="primary">Go to product</Button></Link>
         </Card.Body>    
         </Col>
         </Row>

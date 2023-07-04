@@ -2,33 +2,96 @@
 
 .sidebar{
   display: flex;
-  flex-direction: column;
-  max-width: 300px;
-  background-color: var(--bg-color);
+  flex-direction: row;
   padding: 0px 0px;
+  max-width: 600px;
+  position: relative;
+  z-index: 1;
+}
+.sidebar-category{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: start;
+  font-weight: bold;
+  width: 500px;
+}
+.sidebar-category>.sidebar-item:nth-child(1)>.sidebar-subcategory{
+  top: 0px;
+}
+.sidebar-category>.sidebar-item:nth-child(2)>.sidebar-subcategory{
+  top: 0px;
+}
+.sidebar-category>.sidebar-item:nth-child(3)>.sidebar-subcategory{
+  top: 0px;
+}
+.sidebar-category>.sidebar-item:nth-child(4)>.sidebar-subcategory{
+  top: 0px;
+}
+.sidebar-category>.sidebar-item:nth-child(5)>.sidebar-subcategory{
+  top: 200px;
+}
+.sidebar-category>.sidebar-item:nth-child(6)>.sidebar-subcategory{
+  top: 320px;
+}
+.sidebar-category>.sidebar-item:nth-child(7)>.sidebar-subcategory{
+  top: 350px;
 }
 .sidebar-item{
+  height: 70px; 
+  width: 250px;
+  background-color: var(--button-color);
+  cursor: pointer;
+}
+.sidebar-item-name{
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  text-align: start;
+  padding-left: 30px;
+}
+.sidebar-item-name>p{
+  color: rgb(255, 255, 255);
+  margin: 0px 0px;
 }
 .sidebar-item:hover{
-  background-color: var(--button-color);
-  color: var(--bg-color)!important;
+  background-color: var(--hover-color);
 }
-.sidebar-sub{
-  display: flex;
-  flex-direction: column;
-  max-width: 300px;
-  background-color: var(--bg-color);
-  margin-left: 1%;
-  padding: 0px 0px;
+
+.sidebar-item:hover .sidebar-item-name>p{
+  color: var(--font-color);
 }
-.sidebar-subitem{
+.sidebar-subcategory{
+  display: none;
   text-align: start;
+  position: relative;
+  width: 250px;
+}
+
+.sidebar-item:hover .sidebar-subcategory{
+  display: block;
+  position: absolute;
+  left: 250px;
+  background-color: var(--hover-color);
+  opacity: 0.9;
+  padding: 0px 0px;
 }
 .sidebar-subitem:hover{
   background-color: var(--button-color);
   color: var(--bg-color)!important;
+  
 }
+
+.sidebar-subitem{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: start;
+  padding: 30px  40px;
+  width: 250px;
+  height: 75px;
+  background-color: var(--hover-color);
+  color: var(--font-color)!important;
+}
+

@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Navigation, A11y } from 'swiper';
 import { useEffect,useState } from 'react';
 import { Product } from '../types/types';
 import { getProductByCategory } from '../firebase/ref';
@@ -29,15 +29,32 @@ const Swipe = () => {
         modules={[Navigation, A11y]}
         navigation
         spaceBetween={50}
-        slidesPerView={3}
+        breakpoints={{
+            0: {
+                slidesPerView: 2,
+                },
+            800: {
+                slidesPerView: 3,
+                },
+            1024: {
+                slidesPerView: 4,
+                },
+            1200: {
+                slidesPerView: 5,
+                },
+            1400: {
+                slidesPerView: 6,
+                },
+            }}
+        
        >
       {products&&products.map((product,index) => {
             return (
                
             <SwiperSlide key={index} >
-                <Link to={`/${product.title}`}>
+                <Link to={`/products/${product.id}`}>
                     <img
-                        className=" mb-3 swipe-image"
+                        className="swipe-image"
                         src={product.image}
                         alt="First slide"
                     />

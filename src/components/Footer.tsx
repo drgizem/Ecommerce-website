@@ -49,7 +49,7 @@ const Footer = () => {
             </Col>
         </Row>
         <Row className=" mt-2 footer-text">
-            <Col md={3} claasName='copyright'>
+            <Col md={3} className='copyright'>
                 <p>© 2023, All rights reserved</p>
             </Col>
             <Col md={4} className='terms-privacy'>

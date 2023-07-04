@@ -1,4 +1,3 @@
-import Footer from "./Footer"
 import { Container, Row, Col,Form,Button } from "react-bootstrap"
 import { useState } from "react"
 
@@ -55,7 +54,7 @@ const Contact = () => {
           </Row>
         </Form>
         </Container>
-      <Footer/>
+      
       </>
         
     )

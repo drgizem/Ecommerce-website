@@ -1,4 +1,3 @@
-import Footer from "./Footer"
 import {Container} from 'react-bootstrap'
 
 
@@ -37,7 +36,6 @@ const About = () => {
 
             
            </Container>
-            <Footer />
         </div>
     )
 }

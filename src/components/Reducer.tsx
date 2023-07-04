@@ -38,7 +38,7 @@ export const Reducer=(state:InitialType,action:ContextAction)=>{
           totalPrice:0
         }
       case "select_category":
-        return {...state,category:action.payload,subcategory:{name:""}}
+        return {...state,category:action.payload}
         case "select_subcategory":
           return {...state,subcategory:action.payload}
         case "select_product":

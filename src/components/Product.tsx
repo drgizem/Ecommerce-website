@@ -1,20 +1,19 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { Context } from "./Context"
 import { Product } from "../types/types"
 import { Container, Row,Col, Button,Form } from "react-bootstrap"
 import "../styles/Product.css"
 import {getDoc,doc,setDoc} from "firebase/firestore"
 import {db} from "../firebase/firebase"
-
+import { useLoaderData } from "react-router-dom"
 
 export const Productpart=()=>{
   const {state,dispatch}=useContext(Context)
   const [count,setCount]=useState("1")
-  const [product,setProduct]=useState<Product>({} as Product)
   
-  useEffect(()=>{
-    setProduct(state.product)
-  },[])
+  const loadData =useLoaderData() as {product:Product}
+
+
   const handleAdd=async(product:Product)=>{
     if(state.user.email !==""){
       const userRef=doc(db,"users",`${state.user.id}`)
@@ -81,20 +80,31 @@ const onChangeCount=(e:any)=>{
     <Container className="mt-5">
       <Row className="poduct">
         <Col>
-        <img src={product.image} alt="" style={{maxWidth:"400px",height:"500px"}}/>
+        <img src={loadData.product.image} alt="" style={{maxWidth:"400px",height:"500px"}}/>
         </Col>
         <Col>
-        <h1>{product.title}</h1>
-        <p>{product.description}</p>
+        <h1>{loadData.product.title}</h1>
+        <p>{loadData.product.description}</p>
         </Col>
         <Col sm={3}>
-        <h1>${product.price}</h1>
+        <h1>${loadData.product.price}</h1>
         <Row className="product-cartpart">
         <Form className="cartpart-input"><Form.Control type="number" placeholder="1" onChange={onChangeCount} value={count}/></Form>
-        <Button className="cartpart-btn" onClick={()=>handleAdd(product)}>Add to Cart</Button>
+        <Button className="cartpart-btn" onClick={()=>handleAdd(loadData.product)}>Add to Cart</Button>
         </Row>
         </Col>
       </Row>
     </Container>
   )
+}
+
+export const ProductLoader = async ({params}:any) => {
+  const {id}=params
+  let product:Product={} as Product
+  const docRef=doc(db,"products",`${id}`)
+  const docSnap=await getDoc(docRef)
+  if(docSnap.exists()){
+    product=docSnap.data() as Product
+  }
+  return {product}
 }

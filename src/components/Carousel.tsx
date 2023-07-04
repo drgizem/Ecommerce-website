@@ -22,7 +22,7 @@ const ProductCarousel = () => {
             {products&&products.map((product,index) => {
                 return (
                     <Carousel.Item key={index}>
-                  <Link to={`/${product.title}`}> 
+                  <Link to={`/products/${product.id}`}> 
                   <Row>
                   <Col>
                        <img

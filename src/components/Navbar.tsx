@@ -9,9 +9,12 @@ import { useContext,useState,useEffect } from "react";
 import { Context } from "./Context";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebase";
+import { Product } from "../types/types";
+import { Badge } from "@mui/material";
 import { Product,SubCategory,Category } from "../types/types";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { getCategory,getSubCategory,filterProducts } from "../firebase/ref";
+
 
 
 
@@ -124,7 +127,7 @@ useEffect(()=>{
                  <Dropdown.Item href="/" className="dropdown_text" onClick={onSignOut}>Sign out</Dropdown.Item>
                </Dropdown.Menu>
              </Dropdown>)  }
-      <Link to="/cart" className="signin"><ShoppingCartIcon/></Link>
+      <Link to="/cart" className="signin"><Badge badgeContent={state.cart.length} color="secondary"><ShoppingCartIcon/></Badge></Link>
       </Col>
       {search !=="" &&  <div className="mt-2 navbar-searchitems">{filteredProducts.map(product=>{
         return <Card key={product.id} className="search-bar mb-1" onClick={()=>handleClick(product)}>

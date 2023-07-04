@@ -1,7 +1,8 @@
+
+import ProductCarousel from "./Carousel"
 import {  useEffect, useState } from "react"
 import { Row,Col } from "react-bootstrap"
 import "../styles/Home.css"
-import  Carousel  from "./Carousel"
 import  Sidebar  from "./Sidebar"
 import Featured from "./Featured"
 import Swipe from "./Swipe"
@@ -34,5 +35,6 @@ export const Home=()=>{
    </>
 
   )
+
 }
 

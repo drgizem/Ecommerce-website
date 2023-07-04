@@ -10,8 +10,7 @@ type ContextAction=
 | {type:"clear_cart" ;payload:CartProduct[]}
 | {type:"add_cart" ;payload:CartProduct[]}
 | {type:"remove_cart" ; payload:CartProduct[]}
-
-
+| {type:"calculate_total";payload:number}
 
 
 export const Reducer=(state:InitialType,action:ContextAction)=>{
@@ -35,8 +34,8 @@ export const Reducer=(state:InitialType,action:ContextAction)=>{
           category:0,
           subcategory:0,
           stock:0},
-          query:"",
-          cart:[]
+          cart:[],
+          totalPrice:0
         }
       case "select_category":
         return {...state,category:action.payload}
@@ -44,14 +43,14 @@ export const Reducer=(state:InitialType,action:ContextAction)=>{
           return {...state,subcategory:action.payload}
         case "select_product":
           return {...state,product:action.payload}
-          case "search_query":
-          return {...state,query:action.payload}
           case "clear_cart":
           return {...state,cart:action.payload}
           case "add_cart":
           return {...state,cart:action.payload}
           case "remove_cart":
           return {...state,cart:action.payload}
+          case "calculate_total":
+          return {...state,totalPrice:action.payload}
         default:
           return state
   }

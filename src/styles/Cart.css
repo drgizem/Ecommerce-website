@@ -12,3 +12,9 @@
   color: black;
   background-color:var(--hover-color);
 }
+
+.cart-counter{
+  width: 50px;
+  padding: 10px 10px 10px 5px;
+  margin-left: 40%;
+}

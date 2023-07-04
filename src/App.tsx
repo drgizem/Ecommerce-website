@@ -15,6 +15,8 @@ import AdminAddProduct from './components/AdminSide/AdminAddProduct';
 import AdminEdit from './components/AdminSide/AdminEdit';
 import Contact from './components/Contact';
 import About from './components/About';
+import Footer from "./components/Footer";
+import { Checkout } from "./components/Checkout";
 
 import RootLayout from "./components/RootLayout";
 import { CategoryLayout } from "./components/CategoryLayout";

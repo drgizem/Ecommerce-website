@@ -44,3 +44,13 @@ export type CategoryMain = {
 export type SubCategory = {
   name: string;
 }
+export type Address={
+  userName:string,
+  city:string,
+  state:string,
+  country:string,
+  address:string,
+  phone:number,
+  zipcode:number,
+  addressName:string
+}

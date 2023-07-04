@@ -1,0 +1,48 @@
+@import url("features.css");
+
+.checkout-pricepart{
+  display: flex;
+  justify-content: space-between;
+}
+.checkout-price{
+  background-color:var(--bg-color) ;
+}
+.shipping-btn{
+  background-color: var(--button-color);
+  border:none
+}
+.shipping-btn:hover{
+  background-color: var(--hover-color);
+  color: black;
+}
+.checkout-form{
+  max-width: 400px;
+}
+.checkout-formlabel{
+  float: left;
+}
+.checkout-formnumber::-webkit-outer-spin-button,
+.checkout-formnumber::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.checkout-formselect{
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+.addresscard{
+  max-width: 16rem;
+  height: 200px;
+}
+.delivery-options{
+  display: flex;
+  gap:15px;
+}
+.delivery-card{
+  width: 200px;
+}
+.error-text{
+  color:#dc3545;
+  float: left;
+}

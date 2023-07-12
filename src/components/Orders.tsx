@@ -28,7 +28,7 @@ export const Orders=()=>{
           <Col>
           <div className="orders">
             <h1 className="mt-5">Recent Orders</h1>
-            <ol>
+            {orders.length !==0 ? <ol>
               {orders.map((item:Order,index:number)=>{
                 return <li key={index} className="orders-item">
                   <p><strong>ORDER DATE:</strong>{item.date}</p>
@@ -43,7 +43,7 @@ export const Orders=()=>{
                   </Col><hr/>
                 </li>
               })}
-            </ol>
+            </ol> : <h3>No Past Orders</h3>}
           </div>
           </Col>
         </Row>

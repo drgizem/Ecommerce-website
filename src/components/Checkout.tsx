@@ -47,8 +47,8 @@ useEffect(()=>{
     }
     setTotal(totalprice)
   }
-  calculate() 
-},[]) // eslint-disable-next-line
+  calculate() // eslint-disable-next-line
+},[]) 
 useEffect(()=>{
   if(state.user.email !==""){
   const userRef=doc(db,"users",`${state.user!.id}`)
@@ -59,9 +59,9 @@ useEffect(()=>{
     setSelect({} as Address)
     setSelectExtraDeli(false)
     setSelectDeli(false)
-  })
-  return ()=>unSubscribe() // eslint-disable-next-line
-}
+  }) 
+  return ()=>unSubscribe() 
+}// eslint-disable-next-line
 },[]) 
 useEffect(()=>{
   total<1000 ? setDelivery(15) : setDelivery(0)

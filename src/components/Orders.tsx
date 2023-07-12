@@ -19,8 +19,8 @@ export const Orders=()=>{
         setOrders(list)
       })
       return ()=>unSubscribe()
-    }
-  },[])// eslint-disable-next-line
+    }// eslint-disable-next-line
+  },[])
 
     return (
       <Container>

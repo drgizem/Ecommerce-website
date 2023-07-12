@@ -20,6 +20,7 @@ import { CategoryLayout } from "./components/CategoryLayout";
 import {SubCategoryLoader} from "./components/SubCategory"
 import {ProductLoader} from "./components/Product"
 import { Checkout } from './components/Checkout';
+import { Orders } from './components/Orders';
 
 
 function App() {
@@ -59,6 +60,7 @@ const router = createBrowserRouter(
         />
       </Route>
       <Route path="checkout" element={<Checkout/>} />
+      <Route path="orders" element={<Orders/>} />
     </Route>
 )
 );

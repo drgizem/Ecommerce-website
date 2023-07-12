@@ -14,7 +14,7 @@ export const Home=()=>{
     window.addEventListener("resize",()=>setWidth(window.innerWidth))
   }
   ,[width])
- 
+
   return (
    <>
     <Row className="carousel-sidebar">

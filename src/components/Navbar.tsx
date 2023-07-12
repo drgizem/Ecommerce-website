@@ -120,7 +120,8 @@ useEffect(()=>{
                </Dropdown.Toggle>
                 <Dropdown.Menu >
                 <Dropdown.Item className="dropdown_text email">{state.user.email}</Dropdown.Item>
-                 <Dropdown.Item href="/" className="dropdown_text" onClick={onSignOut}>Sign out</Dropdown.Item>
+                <Dropdown.Item href="/orders" className="dropdown_text">Recent Orders</Dropdown.Item>
+                <Dropdown.Item href="/" className="dropdown_text" onClick={onSignOut}>Sign out</Dropdown.Item>
                </Dropdown.Menu>
              </Dropdown>)  }
       <Link to="/cart" className="signin"><Badge badgeContent={state.cart.length>0 ? state.cart.length : null} color="secondary"><ShoppingCartIcon/></Badge></Link>

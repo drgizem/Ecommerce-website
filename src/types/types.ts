@@ -54,3 +54,8 @@ export type Address={
   zipcode:number,
   addressName:string
 }
+export type Order={
+  orders:CartProduct[],
+  date:string,
+  totalPrice:number
+}

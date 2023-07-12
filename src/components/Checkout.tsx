@@ -11,6 +11,7 @@ import { Payment } from "./Payment";
 import {getDoc,doc,setDoc,onSnapshot} from "firebase/firestore"
 import {db} from "../firebase/firebase"
 
+
 let now:Dayjs=dayjs()
 let tomorrow=now.add(1,"d").toString().split(" ")
 let threedays=now.add(3,"d").toString().split(" ")
@@ -18,7 +19,7 @@ let threedays=now.add(3,"d").toString().split(" ")
 
 export const Checkout=()=>{
 const [total,setTotal]=useState<number>(0)
-const [delivery,setDelivery]=useState<number>()
+const [delivery,setDelivery]=useState<number>(0)
 const [selectDeli,setSelectDeli]=useState(false)
 const [selectExtraDeli,setSelectExtraDeli]=useState(false)
 const [form,setForm]=useState(false)
@@ -84,15 +85,28 @@ const onClose=()=>{
   setSelectDeli(false)
   setSelectExtraDeli(false)
 }
+
 const onSubmit=async()=>{
-  dispatch({
-    type:"clear_cart",payload:[]
-  })
   const userRef=doc(db,"users",`${state.user.id}`)
   const listRef=await getDoc(userRef)
   const dbList=listRef.data()
-  setDoc(userRef,{...dbList,cart:[]})
+  const newUser={...dbList}
+  let newOrder={
+    date:now.format("MM/DD/YYYY"),
+    orders:newUser.cart,
+    totalPrice:(total+delivery).toFixed(2)
+  }
+  const newOrders=[...newUser.orders,newOrder]
+  newOrders[newUser.orders.length]=newOrder
+  newUser.orders=newOrders
+  setDoc(userRef,{...dbList,cart:[],orders:newOrders})
   setAlert(true)
+  dispatch({
+    type:"checkout",payload:newUser.orders
+  })
+  dispatch({
+    type:"clear_cart",payload:[]
+  })
 }
   return (
     <Container>
@@ -118,7 +132,7 @@ const onSubmit=async()=>{
         <h1>Order Summary</h1>
         <div className="checkout-pricepart" >
         <p>Item(s):</p>
-        <p>${total}</p>
+        <p>${total.toFixed(2)}</p>
         </div>
         <div className="checkout-pricepart"><p>Delivery:</p>
         {delivery !==0 ? <p>${delivery}</p> : <p>Free</p>}
@@ -126,7 +140,7 @@ const onSubmit=async()=>{
         <hr/>
         <div className="checkout-pricepart">
           <p>Total:</p>
-          <p>${total+delivery!}</p>
+          <p>${(total+delivery)!.toFixed(2)}</p>
           </div>
       </Col>
       </Row>

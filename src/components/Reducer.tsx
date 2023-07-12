@@ -1,4 +1,4 @@
-import { CartProduct, Category, Product, SubCategory, User } from "../types/types"
+import { CartProduct, Category, Order, Product, SubCategory, User } from "../types/types"
 import { InitialType } from "./Context"
 
 type ContextAction=
@@ -11,6 +11,7 @@ type ContextAction=
 | {type:"add_cart" ;payload:CartProduct[]}
 | {type:"remove_cart" ; payload:CartProduct[]}
 | {type:"calculate_total";payload:number}
+| {type:"checkout";payload:Order[]}
 
 
 export const Reducer=(state:InitialType,action:ContextAction)=>{
@@ -35,7 +36,8 @@ export const Reducer=(state:InitialType,action:ContextAction)=>{
           subcategory:0,
           stock:0},
           cart:[],
-          totalPrice:0
+          totalPrice:0,
+          orders:[]
         }
       case "select_category":
         return {...state,category:action.payload}
@@ -49,6 +51,8 @@ export const Reducer=(state:InitialType,action:ContextAction)=>{
           return {...state,cart:action.payload}
           case "remove_cart":
           return {...state,cart:action.payload}
+          case "checkout":
+          return {...state,orders:action.payload}
           case "calculate_total":
           return {...state,totalPrice:action.payload}
         default:

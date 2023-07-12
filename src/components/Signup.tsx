@@ -51,7 +51,8 @@ export const Signup=()=>{
         id:auth.currentUser?.uid,
         photoUrl:auth.currentUser?.photoURL,
         cart:[],
-        address:[]
+        address:[],
+        orders:[]
       })
     })
     .then(()=>navigate("/"))

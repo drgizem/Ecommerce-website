@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react"
 import { CartProduct } from "../types/types"
 import { Context } from "./Context"
-import { Button, Card, Container, Form, Row } from "react-bootstrap"
+import { Button, Card, Container, Form, Row,Col } from "react-bootstrap"
 import DeleteIcon from '@mui/icons-material/Delete';
 import "../styles/Cart.css"
 import {getDoc,doc,setDoc,onSnapshot} from "firebase/firestore"
@@ -115,20 +115,24 @@ const calculatePrice=()=>{
   return (
 <Container>
     <Row className="mt-5">
-    {cart.length===0 ? <div>No Cart Item</div> :
+      <Col>
+      <div className="cart-part">
+        <Row>{cart.length===0 ? <div className="empty-cart">No Cart Item</div> :
     cart.map((item:CartProduct,index)=>{
       return <Card className="cart-product mt-2" key={item.id} onMouseOver={()=>handleSelect(item)}>
         <Card.Img alt="" src={item.image} style={{maxWidth:"16rem",height:"200px"}}/>
         <Card.Title>{item.title}</Card.Title>
         <Form.Control type="number" placeholder={String(state.cart[index].count)} className="cart-counter mb-3"  onChange={onChangeCount} value={String(state.cart[index].count)}/> 
-         <Card.Text>${item.price*state.cart[index].count}</Card.Text>
+         <Card.Text className="cart-product-price">${item.price*state.cart[index].count}</Card.Text>
         <Button className="cart-btn" onClick={()=>handleRemove(item.id)}><DeleteIcon/>Remove</Button>
       </Card>
-    })} 
-    </Row>
-    {calculatePrice() >0 && <><div className="mt-4">Total Price: ${calculatePrice()}</div>
+    })} </Row>
+        {calculatePrice() >0 && <><div><div className="mt-4">Total Price: ${calculatePrice()}</div>
   <Button className="cart-btn mt-5" onClick={handleClear}>Clear Cart</Button>
-  <Button className="cart-btn mx-3 mt-5" onClick={()=>navigate("/checkout")} >Checkout</Button></>} 
+  <Button className="cart-btn mx-3 mt-5" onClick={()=>navigate("/checkout")} >Checkout</Button></div></>} 
+      </div>
+      </Col>
+    </Row>
   </Container>
   )
 }

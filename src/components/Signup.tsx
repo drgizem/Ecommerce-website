@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { Button, Container, Form,Card } from "react-bootstrap"
+import { Button, Container, Form,Card, Row, Col } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import { NewUser } from "../types/types"
 import { auth } from "../firebase/firebase"
@@ -66,8 +66,11 @@ export const Signup=()=>{
     .then(()=>navigate("/"))
   }
   return (
-  <Container className="login-card">
-    <Form noValidate validated={validate} onSubmit={handleSignup}>
+  <Container>
+    <Row>
+      <Col>
+      <div className="login-card">
+      <Form noValidate validated={validate} onSubmit={handleSignup}>
       <h1 className="login-title">Sign up</h1>
       <Form.Control required className="mt-3" type="text" placeholder="User name" value={user.name || ""} name="name" onChange={handleChange}/>
       <Form.Control required className="mt-3" type="email" placeholder="Email" value={user.email || ""} name="email" onChange={handleChange}/>
@@ -76,9 +79,12 @@ export const Signup=()=>{
       <Button type="submit" className="signin-btn">Sign up</Button>
     </Form>
     <hr/>
-    <Card className="mt-4" onClick={handleGoogle}>
+    <Card className="mt-4 google-card" onClick={handleGoogle}>
       <Card.Body className="google"><img className="google-img" src={signup} alt=""/>Continue with Google</Card.Body>
     </Card>
+      </div>
+      </Col>
+    </Row>
     </Container>
   )
 }

@@ -34,7 +34,7 @@ const Sidebar = () => {
 
     const handleCat=(id:string)=>{
       const cat=catList.find((item)=>item.id===id)
-       cat&& setSelectedCat(cat)
+       cat && setSelectedCat(cat)
     }
     
     return (

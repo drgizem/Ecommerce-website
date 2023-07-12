@@ -9,7 +9,6 @@ const Footer = () => {
       <div  className="footer">
         <Row className="footer-links">
             <Col xs={4} s={3} md={2} className="p-0 footer-shop">
-                
                 <ul>
                     <li><h6>Shop</h6></li>
                     <li><a href="/shop">Shop All</a></li>
@@ -18,7 +17,6 @@ const Footer = () => {
                 </ul>
             </Col>
             <Col xs={4} s={3}  md={2} className="p-0 footer-help">
-                
                 <ul>
                     <li><h6>Help</h6></li>
                     <li><a href="/contact">Contact</a></li>

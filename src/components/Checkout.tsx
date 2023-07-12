@@ -91,13 +91,12 @@ const onSubmit=async()=>{
   const userRef=doc(db,"users",`${state.user.id}`)
   const listRef=await getDoc(userRef)
   const dbList=listRef.data()
-  console.log(dbList)
   setDoc(userRef,{...dbList,cart:[]})
   setAlert(true)
 }
   return (
     <Container>
-      {alert ? <Alert variant="success">Payment is successful! Return <Alert.Link href="/">Home Page</Alert.Link></Alert> : <>
+      {alert ? <Alert variant="success">Payment is successful! Return <Alert.Link className="checkout-alert" href="/">Home Page</Alert.Link></Alert> : <>
       <Row className="mt-5">
       <Col md={8}>
         <h1>SHIPPING</h1>

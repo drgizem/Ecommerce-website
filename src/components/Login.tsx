@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { Button, Container, Form } from "react-bootstrap"
+import { Button, Container, Form ,Row,Col} from "react-bootstrap"
 import { NewUser } from "../types/types"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../firebase/firebase"
@@ -49,8 +49,11 @@ export const Login=()=>{
     setUserError(false)
   }
   return (<>
-  <Container className="login-card">
-    <Form.Check className="signin-check" type="switch" label="Create an account" onChange={()=>setSignup(true)}/>
+  <Container >
+    <Row>
+      <Col>
+      <div className="login-card">
+      <Form.Check className="signin-check" type="switch" label="Create an account" onChange={()=>setSignup(true)}/>
     {signup && <Navigate to="/signup"/>} 
     <Form noValidate validated={validate} onSubmit={handleLogin} onClick={onFormClick}>
       <h1 className="login-title">Login</h1>
@@ -60,6 +63,9 @@ export const Login=()=>{
       {userError && <Form.Text className="mt-3 text-danger">User is not found!</Form.Text>}
       <Button type="submit" className="signin-btn">Login</Button>
     </Form>
+      </div>
+      </Col>
+    </Row>
     </Container>
     </>
   )

@@ -23,7 +23,7 @@ export const Home=()=>{
         </Col>:null
       }
       <Col xs={11} lg={9} className="carousel">
-        <Carousel/>
+        <ProductCarousel/>
       </Col>
     </Row>
     <Row className="swipe-cont mx-5">

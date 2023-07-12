@@ -12,7 +12,6 @@ import 'swiper/css/scrollbar';
 
 const Swipe = () => {
     const [products, setProducts] = useState<Product[]>([]);
-   
     //get products from firebase
     useEffect(() => {
         getProductByCategory('2','TV').then((products) => {
@@ -23,7 +22,6 @@ const Swipe = () => {
          
         }, [])
     
-// add go to product page on click
     return (
        <Swiper
         modules={[Navigation, A11y]}
@@ -46,11 +44,9 @@ const Swipe = () => {
                 slidesPerView: 6,
                 },
             }}
-        
        >
       {products&&products.map((product,index) => {
-            return (
-               
+            return ( 
             <SwiperSlide key={index} >
                 <Link to={`/products/${product.id}`}>
                     <img
@@ -67,7 +63,6 @@ const Swipe = () => {
         })
       }
     </Swiper>
-
     )
 }
 

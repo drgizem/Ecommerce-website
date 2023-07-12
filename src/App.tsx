@@ -15,13 +15,11 @@ import AdminAddProduct from './components/AdminSide/AdminAddProduct';
 import AdminEdit from './components/AdminSide/AdminEdit';
 import Contact from './components/Contact';
 import About from './components/About';
-import Footer from "./components/Footer";
-import { Checkout } from "./components/Checkout";
-
 import RootLayout from "./components/RootLayout";
 import { CategoryLayout } from "./components/CategoryLayout";
 import {SubCategoryLoader} from "./components/SubCategory"
 import {ProductLoader} from "./components/Product"
+import { Checkout } from './components/Checkout';
 
 
 function App() {
@@ -60,6 +58,7 @@ const router = createBrowserRouter(
         loader={ProductLoader}
         />
       </Route>
+      <Route path="checkout" element={<Checkout/>} />
     </Route>
 )
 );

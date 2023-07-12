@@ -1,10 +1,9 @@
 @import url("features.css");
 
 
-.product-cartpar{
+.product-cartpart{
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
 }
 .cartpart-input{
@@ -19,4 +18,14 @@
 .cartpart-btn:hover{
   background-color: var(--hover-color);
   color:black
+}
+.product div p{
+  color:var(--font-color)!important;
+  text-align: start;
+  margin-top: 10%;
+  line-height: 30px;
+  margin-bottom: 10%;
+}
+.product div h1{
+  text-align: start;
 }

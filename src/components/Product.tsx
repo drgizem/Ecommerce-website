@@ -78,15 +78,13 @@ const onChangeCount=(e:any)=>{
 }
   return (
     <Container className="mt-5">
-      <Row className="poduct">
-        <Col>
+      <Row className="product">
+        <Col xs={12} md={6}>
         <img src={loadData.product.image} alt="" style={{maxWidth:"400px",height:"500px"}}/>
         </Col>
-        <Col>
+        <Col className="mt-5">
         <h1>{loadData.product.title}</h1>
         <p>{loadData.product.description}</p>
-        </Col>
-        <Col sm={3}>
         <h1>${loadData.product.price}</h1>
         <Row className="product-cartpart">
         <Form className="cartpart-input"><Form.Control type="number" placeholder="1" onChange={onChangeCount} value={count}/></Form>

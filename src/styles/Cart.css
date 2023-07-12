@@ -1,12 +1,27 @@
 @import url("features.css");
 
+
+.cart-part{
+  margin-bottom: 25%;
+}
 .cart-product{
   max-width: 300px;
   margin-right: 3%;
 }
+.cart-text{
+  color:var(--font-color)
+}
+.card-title{
+  padding: 10px 5px;
+}
+.card-img{
+  margin: 0 auto;
+}
 .cart-btn{
   background-color: var(--button-color);
-  border: none
+  border: none;
+  max-width: 50%;
+  margin: 0 auto 10px auto;
 }
 .cart-btn:hover{
   color: black;
@@ -17,4 +32,10 @@
   width: 50px;
   padding: 10px 10px 10px 5px;
   margin-left: 40%;
+}
+.cart-product-price{
+  color: black!important;
+}
+.empty-cart{
+  font-size: 30px;
 }

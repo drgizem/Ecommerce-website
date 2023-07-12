@@ -49,7 +49,7 @@ export const Checkoutform=({onClose}:Props)=>{
         addressName:""})
         onClose()
   };
-console.log(validated)
+
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit} className="checkout-form">
       <h3>Add Address</h3>

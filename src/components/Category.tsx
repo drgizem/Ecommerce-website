@@ -10,7 +10,6 @@ type LoadData={
 }
 
 export const Categorypart=()=>{
- 
  const loadData =useLoaderData() as LoadData
 
   return (
@@ -27,7 +26,7 @@ export const Categorypart=()=>{
       <Card className="product-card">
         <Card.Img  src={item.image} style={{maxWidth:"16rem",height:"200px"}}/>
         <Card.Title className="product-title">{item.title}</Card.Title>
-        <Card.Text className="product-price">{item.price}$</Card.Text>
+        <Card.Text className="product-price">${item.price}</Card.Text>
         <Link to={`/products/${item.id}`}><Button className="product-btn">Go to product</Button></Link>
       </Card>)
     })}
@@ -37,7 +36,6 @@ export const Categorypart=()=>{
 } 
 
 export const CategoryLoader = async ({params}:any) => {
- 
   const {name}=params
   let id:string = await getCategoryId(name)
   let subCategories:SubCategory[]=[] 

@@ -19,6 +19,8 @@ export const Orders=()=>{
         setOrders(list)
       })
       return ()=>unSubscribe()
+    } else{
+      setOrders([])
     }// eslint-disable-next-line
   },[])
 

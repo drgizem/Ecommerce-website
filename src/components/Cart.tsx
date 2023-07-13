@@ -127,7 +127,7 @@ const calculatePrice=()=>{
         <Button className="cart-btn" onClick={()=>handleRemove(item.id)}><DeleteIcon/>Remove</Button>
       </Card>
     })} </Row>
-        {calculatePrice() >0 && <><div><div className="mt-4">Total Price: ${calculatePrice()}</div>
+        {calculatePrice() >0 && <><div><div className="mt-4">Total Price: ${calculatePrice().toFixed(2)}</div>
   <Button className="cart-btn mt-5" onClick={handleClear}>Clear Cart</Button>
   <Button className="cart-btn mx-3 mt-5" onClick={()=>navigate("/checkout")} >Checkout</Button></div></>} 
       </div>

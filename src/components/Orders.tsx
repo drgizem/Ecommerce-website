@@ -23,7 +23,7 @@ export const Orders=()=>{
       setOrders([])
     }// eslint-disable-next-line
   },[])
-
+   console.log(state.user.email)
     return (
       <Container>
         <Row>

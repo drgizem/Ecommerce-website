@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+to view DEMO---> [Click Here](https://master--splendorous-puffpuff-ec0a2a.netlify.app/)
+
+## Technologies and Features of the Project:
+- React, Typescript, Bootstrap, React Router
+- Responsive web design
+- Firebase database & Authentication
+- Checkout page and following Recent Orders 
+
+
 ## Available Scripts
 
 In the project directory, you can run:
